@@ -4,7 +4,6 @@ html,body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* overflow: hidden; */
 }
 
 .freckles{
@@ -13,29 +12,15 @@ html,body{
 
 .fakeimg {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("images/a6.jpeg");
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("images/bg20.jpeg"); */
-   
-    /* background-image: url(images/a6.jpeg); */
     height: 100%;
-    /* background-size: cover; */
     background-size: cover;
     background-position: center;
   background-repeat: no-repeat;
   margin-top: 50px;
   box-sizing: border-box;
-  /* background-color: rgba(0,0,0,0.5); */
-  /* flex-wrap: wrap; */
-
 }
 
 .fakeimgContent{
-    /* margin: 0px auto;
-    padding: 0px; */
-    /* position: absolute;
-    
-    top: auto; */
-    /* padding-top: 190px; */
-    /* margin-top: 50px; */
     position: absolute;
   top: 50%;
   left: 50%;
@@ -45,24 +30,14 @@ html,body{
 
 .bgModify{
   position: absolute;
-  /* top: 20%;
-  left: 30%; */
   top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
   height: 80vh;
   border-radius: 10px;
-  /* border: 1px solid black; */
-  /* width: 80%;
-  height: 80%; */
-  /* background-color: green; */
-  /* background: rgba(52, 58, 64,0.4); */
-
   background: #343A40;
   background: rgba(52, 58, 64,0.4);
-  /* background: transparent; */
-
   border: 3px solid #212529;
   box-shadow:0 0 10px#212529;
 }
@@ -72,28 +47,18 @@ text-align: center;
 }
 
 
-
 .site-title{
 
     padding: 0;
     margin: 0;
     font-family: 'Freckle Face', cursive;
     font-size: 5vw;
-    
-    /* color: rgb(117, 2, 2); */
     color: rgb(254, 194, 7);
     padding: 20px 20px 20px 20px;
     background-color: rgba(52, 58, 64,0.8);
     border-radius: 20px;
-    /* border: 3px solid  rgb(254, 194, 7);
-    box-shadow:0 0 10px rgb(254, 194, 7); */
-    /* box-sizing: border-box; */
-
     border: 3px solid #212529;
     box-shadow:0 0 10px#212529;
-    
-    /* box-shadow:0 0 10px#28a745;
-    border: 3px solid #28a745; */
 }
 
 .site-desc{
@@ -102,25 +67,13 @@ text-align: center;
     margin: 0;
     font-size: 3vw;
     font-family: 'Freckle Face', cursive;
-    /* color: rgb(42, 6, 6); */
     color:rgb(217, 41, 56);
-    /* color: green; */
-    /* padding: 20px 40px 30px 80px; */
-
     padding: 10px 40px 10px 80px;
     background-color: rgba(52, 58, 64,0.8);
     border-radius: 20px;
     text-align: center;
-    /* box-shadow:0 0 10px rgb(254, 194, 7);
-    border: 3px solid rgb(254, 194, 7); */
-
     border: 3px solid #212529;
     box-shadow:0 0 10px#212529;
-/* 
-
-    box-shadow:0 0 10px#28a745;
-    border: 3px solid #28a745; */
-
 }
 
 .card-border{
@@ -132,7 +85,6 @@ text-align: center;
 } 
 
 .navFont{
-  /* font-family: 'Roboto Slab', serif; */
   font-family: 'Freckle Face', cursive;
      font-size: x-large;
    }
@@ -147,11 +99,9 @@ text-align: center;
     position: absolute;
     left: 5%;
     animation: droneMov 5s linear infinite;#
-    /* z-index: -1; */
   }
   .drone-pic{
 width: 100%;
-/* height: 30px; */
   }
 
   .drone-left{
@@ -209,17 +159,11 @@ width: 100%;
 
 .loader{
   position: absolute;
-  /* display: flex; */
   padding: 100px;
   align-items: center;
   background: white;
-  /* padding-top: 0%; */
-  /* top: 50%;
-  left: 50%; */
   top: 70rem;
   left: 50%;
-  /* top: 30px; */
-  /* transform: translate(-50%, -50%) rotate(0deg); */
   animation: rotate 50s linear infinite;
   filter: blur(10px) contrast(15);
   z-index: -1;
@@ -260,7 +204,6 @@ width: 100%;
   
   .particle:nth-child(5){
     animation-delay: .75s;
-    /* background: yellow; */
   }
   
   .particle:nth-child(7){
@@ -269,7 +212,6 @@ width: 100%;
   
   .particle:nth-child(9){
     animation-delay: .3s;
-    /* background: yellow; */
   }
   .leftspin{
     animation: leftspin 2.5s linear infinite;
@@ -383,8 +325,6 @@ color:rgb(254, 194, 7)
 .projects{
     height: 100vh;
     background-color:white;
-    /* overflow: scroll; */
-    /* display: flex; */
 }
 
 .projects h1{
@@ -482,8 +422,6 @@ color:white;
     text-align: center;
     font-size :50px;
     padding: 10px 0px 10px 0px;
-    /* padding: 0; */
-    
   }
 
   .bgModify{
@@ -523,15 +461,11 @@ animation-fill-mode: none;
     }
 
     .projects{
-      /* height: fit-content; */
       background-color:gray;
-      /* margin-bottom: 10px; */
   }
 
   .projectsContent{
     padding-top: 1rem;
-    /* margin-bottom: 70px; */
-    /* height: fit-content; */
   }
   
   .flip-card{
@@ -541,10 +475,6 @@ animation-fill-mode: none;
     height: fit-content;;
 }
 
-
-
-
-
 }
 
 
@@ -552,7 +482,6 @@ animation-fill-mode: none;
 @media screen and (max-width: 990px) {
   .card1,.card2,.card3{
     width: 50%;
-    /* float:none; */
   }
 
 
@@ -565,12 +494,10 @@ animation-fill-mode: none;
 .projects{
 height: fit-content;
 background-color:gray;
-/* overflow: scroll; */
-/* display: flex; */
 }
 .projectsContent{
 padding-top: 1rem;
-/* height: fit-content; */
+
 }
 
 .about-meDesc{
@@ -627,7 +554,6 @@ margin-bottom: 10px;
 .timeline span{
   font-family: 'Freckle Face', cursive;
   text-align: center;
-  /* background-color:rgb(217, 41, 56); */
 }
 .status:before {
   content: "";
