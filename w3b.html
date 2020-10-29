@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/d2026908e3.js" crossorigin="anonymous"></script>
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
   <script src="https://kit.fontawesome.com/d2026908e3.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css?family=Anton|Fjalla+One|Libre+Baskerville|Pacifico|Roboto+Slab|Ubuntu&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap" rel="stylesheet">
@@ -42,6 +42,13 @@
 
 <span class="bgModify"></span>
   <div class="fakeimg"  id="home1">
+    <div class="drone-box">
+      <img class="drone-pic" src="./images/drone.png">
+      <img class="drone-left" src="./images/drone-left.png">
+      <img class="drone-right" src="./images/drone-right.png">
+      <a target="_blank" href="./images/kligan.pdf" download class="cv"><i class="fas fa-file fa-3x"></i></a>
+      <a href="https://github.com/kligan" target="_blank"><button class="droneGit"><i class="fab fa-github fa-3x"></i></button></a>
+    </div>
     <div class="d-flex justify-content-center fakeimgContent" >
     <div class="d-flex flex-column" >                 
       <h1 class="site-title animated fadeInLeft mb-2" style="animation-duration: 3s;">Kligan Braganza</h1>
@@ -78,42 +85,50 @@
       </div>
     </div>
 
+    <!-- <script>
+              let images = document.querySelector('.img-thumbnail')
+
+let observor = new IntersectionObserver((x)=>{
+    console.log(x)
+})
+
+observor.observe(images); 
+    </script> -->
+
     <div>
       <ul class="timeline" id="timeline">
         <li class="li complete">
           <div class="timestamp">
-            <span class="author">Abhi Sharma</span>
-            <span class="date">11/15/2014<span>
+      
+            <span class="date">June 2009 - July 2013<span>
           </div>
           <div class="status">
-            <h4> Shift Created </h4>
+            <h4> Bachelor in Engineering <br>(IT) </h4>
           </div>
         </li>
         <li class="li complete">
           <div class="timestamp">
-            <span class="author">PAM Admin</span>
-            <span class="date">11/15/2014<span>
+            <!-- <span class="author">2013-2014</span> -->
+            <span >July 2013 - June 2014<span></span>
           </div>
           <div class="status">
-            <h4> Email Sent </h4>
+            <h4> Post Graduation <br> (Game development) </h4>
           </div>
         </li>
         <li class="li complete">
           <div class="timestamp">
-            <span class="author">Aaron Rodgers</span>
-            <span class="date">11/15/2014<span>
+            <span >Mar 2019 - May 2019<span>
           </div>
           <div class="status">
-            <h4> SIC Approval </h4>
+            <h4> Web development <br> (London IT training) </h4>
           </div>
         </li>
         <li class="li">
           <div class="timestamp">
-            <span class="author">PAM Admin</span>
-            <span class="date">TBD<span>
+            <span >Nov 2019- Present<span>
           </div>
           <div class="status">
-            <h4> Shift Completed </h4>
+            <h4> Web development <br> (Just IT Uk) </h4>
           </div>
         </li>
        </ul>      
@@ -124,11 +139,11 @@
 
   <div class="skills" id="skills1">
     <h1 class="skills-text">Skills</h1>
-       <div class="skillsFlex">
+       <div class="skillsFlex animtest">
          <div style=" border: 3px solid #212529;
          box-shadow:0 0 10px#212529;">
            <!-- <img src=""> -->
-          <span style="font-size: 48px; color: #28a745;"><i class="fab fa-react"></i></span> 
+          <span  style="font-size: 48px; color: #28a745; "><i class="fab fa-react "></i></span> 
            <h3>React</h3>
            <p>Building responsive single-page applications and UI components using facebooks open-source Javascript library</p>
          </div>

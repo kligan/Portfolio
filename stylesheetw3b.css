@@ -141,6 +141,70 @@ text-align: center;
       height: 100vh;
   }
 
+  .drone-box{
+    margin: 150px auto;
+    width: 200px;
+    position: absolute;
+    left: 5%;
+    animation: droneMov 5s linear infinite;#
+    /* z-index: -1; */
+  }
+  .drone-pic{
+width: 100%;
+/* height: 30px; */
+  }
+
+  .drone-left{
+    position: absolute;
+    width: 80px;
+    top: 0;
+    left: -28px;
+    animation: droneRotate .2s linear infinite;
+  }
+
+  .drone-right{
+    position: absolute;
+    width: 80px;
+    top: 0;
+    right: -28px;
+    animation: droneRotate .2s linear infinite;
+  }
+
+  .droneGit{
+    position: absolute;
+    top: 136px;
+    left: 77px;
+    color: white;
+  }
+
+  .cv{
+    position: absolute;
+    top: 66px;
+    left: 83px;
+    color: black;
+  }
+.cv:hover{
+  color: rgb(217, 41, 56);
+}
+
+.droneGit:hover{
+  color:rgb(217, 41, 56);
+}
+  @keyframes droneRotate{
+    100%{
+      transform: rotateY(360deg);
+    }
+  }
+
+  @keyframes droneMov{
+    0%, 100% {
+      bottom: 250px;
+    }
+    50% {
+      bottom: 200px;
+    }
+
+  }
   
 
 .loader{
@@ -156,7 +220,7 @@ text-align: center;
   left: 50%;
   /* top: 30px; */
   /* transform: translate(-50%, -50%) rotate(0deg); */
-  animation: rotate 20s linear infinite;
+  animation: rotate 50s linear infinite;
   filter: blur(10px) contrast(15);
   z-index: -1;
   }
@@ -575,15 +639,12 @@ margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.li {
-  transition: all 200ms ease-in;
+  padding: 30px 0px;
 }
 
 .timestamp {
   margin-bottom: 20px;
-  padding: 0px 40px;
+  padding: 10px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -594,37 +655,36 @@ margin-bottom: 10px;
   padding: 0px 40px;
   display: flex;
   justify-content: center;
-  border-top: 2px solid #D6DCE0;
+  border-top: 2px solid rgb(217, 41, 56);
   position: relative;
-  transition: all 200ms ease-in;
+    
 }
 .status h4 {
-  font-weight: 600;
+  font-weight: 400;
+  font-family: 'Freckle Face', cursive;
+  text-align: center;
+  padding: 10px 0px;
+  
+}
+.timeline span{
+  font-family: 'Freckle Face', cursive;
+  text-align: center;
+  /* background-color:rgb(217, 41, 56); */
 }
 .status:before {
   content: "";
   width: 25px;
   height: 25px;
-  background-color: white;
+  background-color:rgb(217, 41, 56);
   border-radius: 25px;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(217, 41, 56);
   position: absolute;
   top: -15px;
   left: 42%;
   transition: all 200ms ease-in;
 }
 
-.li.complete .status {
-  border-top: 2px solid #66DC71;
-}
-.li.complete .status:before {
-  background-color: #66DC71;
-  border: none;
-  transition: all 200ms ease-in;
-}
-.li.complete .status h4 {
-  color: #66DC71;
-}
+
 
 @media (min-device-width: 320px) and (max-device-width: 700px) {
   .timeline {
