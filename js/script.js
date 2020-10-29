@@ -25,7 +25,7 @@ window.addEventListener("scroll", Animation);
             let images = document.querySelector('.animtest')
 
             let observor = new IntersectionObserver((entries)=>{
-                // console.log(entries)
+        
                 if(entries[0].intersectionRatio > 0){
 entries[0].target.className += " animated bounce"
 
