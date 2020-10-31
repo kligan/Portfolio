@@ -10,6 +10,10 @@ html,body{
   font-family: 'Freckle Face', cursive;
 }
 
+.Grandstander{
+  font-family: 'Grandstander', cursive;
+}
+
 .fakeimg {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("images/a6.jpeg");
     height: 100%;

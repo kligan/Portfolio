@@ -22,17 +22,36 @@ window.addEventListener("scroll", Animation);
             }
           
 
-            let images = document.querySelector('.animtest')
-
-            let observor = new IntersectionObserver((entries)=>{
-        
-                if(entries[0].intersectionRatio > 0){
-entries[0].target.className += " animated bounce"
-
-                }
-                else{
-entries[0].target.style.color = 'none'
-                }
+            let boxes = document.querySelectorAll('.skillsBoxAnimation')
+         
+           let observer = new IntersectionObserver((entries)=>{
+                entries.forEach(entry=>{
+                    if(entry.intersectionRatio > 0){
+                        entry.target.className += ` animated bounceInUp slow`
+                     }
+                     else{
+                        entry.target.style.color = 'none'
+                     }
+                }) 
+            })
+            boxes.forEach(image => {
+                observer.observe(image); 
             })
 
-            observor.observe(images); 
+            
+            let images = document.querySelectorAll('.skillsImageAnimation')
+
+           let observer1 = new IntersectionObserver((entries)=>{
+                entries.forEach(entry=>{
+                   if (entry.intersectionRatio > 0){
+                        entry.target.className += ` animated backInDown slow`
+                     }
+                     else{
+                        entry.target.style.color = 'none'
+                     }
+                })
+            })
+     
+            images.forEach(image => {
+                observer.observe(image); 
+            })
