@@ -6,22 +6,22 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: Montserrat-Regular;
+  font-family: 'Freckle Face', cursive;
   src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
 }
 
 @font-face {
-  font-family: Montserrat-Bold;
+  font-family: 'Freckle Face', cursive;
   src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
 }
 
 @font-face {
-  font-family: Montserrat-ExtraBold;
+  font-family: 'Freckle Face', cursive;
   src: url('../fonts/montserrat/Montserrat-ExtraBold.ttf'); 
 }
 
 @font-face {
-  font-family: Montserrat-Medium;
+  font-family: 'Freckle Face', cursive;
   src: url('../fonts/montserrat/Montserrat-Medium.ttf'); 
 }
 
@@ -38,12 +38,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Montserrat-Regular, sans-serif;
+	/* font-family: Montserrat-Regular, sans-serif; */
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Montserrat-Regular;
+	font-family:'Freckle Face', cursive;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -69,7 +69,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Montserrat-Regular;
+	font-family: 'Freckle Face', cursive;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -186,9 +186,9 @@ iframe {
 
 .contact1-form-title {
   display: block;
-  font-family: Montserrat-ExtraBold;
+  font-family: 'Freckle Face', cursive;
   font-size: 24px;
-  color: #333333;
+  color:#28a745;
   line-height: 1.2;
   text-align: center;
   padding-bottom: 44px;
@@ -224,7 +224,7 @@ textarea.input1 + .shadow-input1 {
   display: block;
   width: 100%;
   background: #e6e6e6;
-  font-family: Montserrat-Bold;
+  font-family: 'Freckle Face', cursive;
   font-size: 15px;
   line-height: 1.5;
   color: #666666;
@@ -277,11 +277,14 @@ textarea.input1 + .shadow-input1 {
   min-width: 193px;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
-  font-family: Montserrat-Bold;
-  font-size: 15px;
+  /* background: #57b846; */
+  border: 3px solid #28a745;
+  box-shadow: 0 0 10px #28a745;
+  background-color: rgba(3, 3, 3, 0.2);
+  font-family: 'Freckle Face', cursive;
+  font-size: 25px;
   line-height: 1.5;
-  color: #fff;
+  color: rgb(217, 41, 56);
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -381,7 +384,7 @@ textarea.input1 + .shadow-input1 {
   position: absolute;
   max-width: 70%;
   background-color: white;
-  border: 1px solid #c80000;
+  border: 1px solid  rgb(217, 41, 56);
   border-radius: 13px;
   padding: 4px 25px 4px 10px;
   top: 50%;
@@ -393,7 +396,7 @@ textarea.input1 + .shadow-input1 {
   right: 8px;
   pointer-events: none;
 
-  font-family: Montserrat-Medium;
+  font-family: 'Freckle Face', cursive;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
