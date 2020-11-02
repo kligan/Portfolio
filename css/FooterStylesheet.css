@@ -2,3 +2,9 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+@media screen and (max-width: 990px){
+    .footer{
+        display: none;
+    }
+}
