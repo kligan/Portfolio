@@ -1,455 +1,430 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f4ef">
+<meta name="description" content="Kligan Braganza, Software Engineer in London. Building thoughtful products with React, TypeScript, APIs and production engineering.">
+<title>Kligan Braganza | Software Engineer</title>
+<style>
 
-    
+:root{--bg:#f5f4ef;--ink:#172721;--muted:#53615a;--line:#d8ddd4;--accent:#326b51;--card:#fff;--dark:#172d25}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #bd702a;outline-offset:5px}
+.wrap{max-width:1160px;margin:auto;padding:0 36px}
+.skip{position:absolute;left:16px;top:-100px;background:white;padding:12px;z-index:10}
+.skip:focus{top:12px}
+header{background:rgba(245,244,239,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:88px}
+.brand{text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.8px}
+.brand span{color:var(--accent)}
+nav{display:flex;gap:28px;align-items:center}
+nav a{text-decoration:none;font-size:13px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.nav-contact{border:1px solid var(--ink);border-radius:50px;padding:9px 18px}
+.menu{display:none;background:none;border:1px solid var(--line);padding:9px 14px;border-radius:8px;color:var(--ink);font:inherit}
+.hero{padding:96px 0 80px;display:grid;grid-template-columns:1.35fr 1fr;gap:70px;align-items:center}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-size:clamp(44px,5.8vw,76px);line-height:1.07;letter-spacing:-3.5px;font-weight:600;margin:24px 0}
+h1 em{font-family:Georgia,serif;font-weight:400;color:var(--accent)}
+.intro{font-size:17px;color:var(--muted);max-width:535px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.button{display:inline-flex;gap:22px;align-items:center;padding:12px 21px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:700;border:1px solid var(--line)}
+.primary{background:var(--ink);color:white;border-color:var(--ink)}
+.button:hover{transform:translateY(-2px)}
+.hero-card{background:var(--dark);color:#e6eee6;border-radius:24px;padding:28px;box-shadow:12px 16px 0 #e1e5d9;transform:rotate(2deg)}
+.card-top{display:flex;justify-content:space-between;color:#a7b7ae;font:11px monospace;letter-spacing:1px;border-bottom:1px solid #3a4f45;padding-bottom:21px}
+.orb{height:190px;display:flex;align-items:center;justify-content:center;position:relative;margin:18px 0}
+.orb:before,.orb:after{content:"";position:absolute;width:158px;height:158px;border:1px solid #527b62;border-radius:50%;transform:rotate(-28deg) scaleX(.55)}
+.orb:after{transform:rotate(35deg) scaleX(.7);width:185px;height:185px}
+.monogram{font:italic 70px Georgia,serif;color:#d1e0bb}
+.card-name{font-size:24px;font-weight:600;letter-spacing:-1px}
+.card-meta{font-size:12px;color:#b5c6bb}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-size:11px;border:1px solid #486152;border-radius:50px;padding:4px 10px}
+.strip{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;font-size:12px;color:var(--muted)}
+.strip strong{color:var(--ink);font-size:16px;margin-right:9px}
+section{padding:78px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
+h2{font-size:38px;letter-spacing:-1.5px;line-height:1.2;margin:12px 0 0;font-weight:600}
+.section-head p{max-width:355px;color:var(--muted);font-size:14px;margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.about-grid p{color:var(--muted);margin-top:0}
+.note{font-size:14px;border-left:2px solid var(--accent);padding-left:22px}
+.experience{border-top:1px solid var(--line)}
+.role{display:grid;grid-template-columns:230px 1fr;gap:45px;padding:30px 0;border-bottom:1px solid var(--line)}
+.company{font-size:22px;letter-spacing:-.6px;font-weight:600}
+.date,.location{font-size:12px;color:var(--muted)}
+h3{margin:0 0 10px;font-size:19px;letter-spacing:-.4px}
+.role p{font-size:14px;color:var(--muted);margin:0 0 12px}
+.role ul{padding-left:18px;margin:12px 0;color:var(--muted);font-size:14px}
+.role li{padding-bottom:6px}
+.role .tags{margin-top:12px}
+.role .tag,.project .tag{border-color:var(--line);color:var(--muted)}
+.earlier{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.earlier article{border:1px solid var(--line);border-radius:12px;padding:22px}
+.earlier h3{font-size:15px}
+.earlier p{font-size:12px;color:var(--muted);margin-bottom:0}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill{padding:26px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.number{font:12px monospace;color:var(--accent);margin-bottom:28px}
+.skill h3{font-size:17px}
+.skill p{font-size:13px;color:var(--muted);margin:0}
+.ai{margin-top:16px;background:#e8edde;border-radius:14px;padding:24px 28px;display:grid;grid-template-columns:220px 1fr;gap:30px}
+.ai h3{font-size:17px}
+.ai p{font-size:13px;color:var(--muted);margin:0}
+.small-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project{border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column}
+.project-symbol{height:100px;margin-bottom:26px;border-radius:8px;background:#e3e9df;display:flex;align-items:center;justify-content:center;font:36px Georgia,serif;color:var(--accent)}
+.project:nth-child(2) .project-symbol{background:#eee4d7;color:#8c603c}
+.project:nth-child(3) .project-symbol{background:#e2e5ec;color:#51647e}
+.project p{font-size:13px;color:var(--muted);margin:0}
+.project a{margin-top:26px;text-decoration:none;font-size:12px;font-weight:700}
+.project .tags{margin-top:auto;padding-top:20px}
+.education{border-top:1px solid var(--line);margin-top:46px;padding-top:24px;display:grid;grid-template-columns:1fr 2fr;gap:40px}
+.education p{font-size:13px;color:var(--muted);margin:0 0 8px}
+.contact{background:var(--dark);color:white;border-radius:24px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.contact .eyebrow{color:#bdd5ad}
+.contact h2{font-size:44px;margin-bottom:16px}
+.contact p{font-size:14px;color:#b9c8be}
+.contact-links{display:flex;flex-direction:column;gap:14px}
+.contact-links a{border-bottom:1px solid #43574b;padding:12px 0;text-decoration:none;font-size:14px;display:flex;justify-content:space-between;gap:8px;overflow-wrap:anywhere}
+footer{padding:28px 0 36px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px}
+footer a{text-decoration:none}
+@media(max-width:850px){.hero{gap:35px;grid-template-columns:1.2fr 1fr}
+.wrap{padding:0 24px}
+.skill-grid{grid-template-columns:repeat(2,1fr)}
+.project-grid{grid-template-columns:1fr}
+.project-symbol{height:90px}
+.earlier{grid-template-columns:1fr}
+.role{grid-template-columns:180px 1fr;gap:25px}
+.contact{padding:32px}
+.contact h2{font-size:34px}
+}
+@media(max-width:620px){.nav{min-height:72px;flex-wrap:wrap}
+.menu{display:block}
+nav{display:none;width:100%;padding:16px 0 24px;flex-wrap:wrap;gap:20px}
+nav.open{display:flex}
+.hero{padding:55px 0;grid-template-columns:1fr;gap:40px}
+h1{letter-spacing:-2px}
+.hero-card{transform:none;max-width:410px;width:100%;margin:auto;box-shadow:6px 8px 0 #e1e5d9}
+.orb{height:135px}
+.orb:before{width:115px;height:115px}
+.orb:after{width:130px;height:130px}
+.strip{flex-wrap:wrap;gap:12px}
+.strip span{flex-basis:45%}
+.section-head{align-items:flex-start;flex-direction:column}
+section{padding:52px 0}
+h2{font-size:32px}
+.about-grid,.role,.ai,.contact,.education{grid-template-columns:1fr;gap:20px}
+.skill-grid{grid-template-columns:1fr}
+.number{margin-bottom:15px}
+.contact{padding:28px}
+.contact h2{font-size:34px}
+.contact-links a{font-size:13px}
+footer{gap:18px}
+.role{padding:26px 0}
+.buttons{gap:8px}
+.button{padding:11px 17px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+.button:hover{transform:none}
+}
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-
-    <!-- bootstrap cdn -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-    <!-- css -->
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-    
-    <!-- javascript -->
-    <script src="js/script.js"></script>
-
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Anton|Fjalla+One|Libre+Baskerville|Pacifico|Roboto+Slab|Ubuntu&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap" rel="stylesheet">
-
-
-
-    <!-- fontawesome -->
-    
-<script src="https://kit.fontawesome.com/d2026908e3.js" crossorigin="anonymous"></script>
-    
-<script type="text/javascript">
-{
-
-window.addEventListener("scroll", Animation);
-            function Animation()
-            {
-                $("#anim:visible").addClass("animated fadeInLeft");
-                
-            }
-
-            window.addEventListener("scroll", Animation1);
-            function Animation1()
-            {
-                $("#anim1:visible").addClass("animated fadeInLeft");
-                
-            }
-
-            window.addEventListener("scroll", Animation2);
-            function Animation2()
-            {
-                $("#anim2:visible").addClass("animated fadeInRight");
-                
-            }
-          }
-
-</script>
-
-  
-    
-    
-    <title>KliganBraganza</title>
-
-
+</style>
 </head>
-
-<body data-spy="scroll" data-target="#scrollTarget">
-
-
-    <!-- navigation -->
-
+<body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
-
-
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top scrolling-navbar">
-<a href="#" class="navbar-brand scrolling-brand">Kligan</a>
-
-
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
-aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse"></div>
-
-<div class="collapse navbar-collapse" id="navbarMenu">
-<ul class="navbar-nav mr-auto">
-
-    <li class="nav-item active mr-5">
-      <a href="#" class="nav-link">HOME</a>
-    </li>
-
-    <li class="nav-item mr-5">
-       <a href="#" class="nav-link">SKILLS</a>
-    </li>
-
-    <li class="nav-item mr-5">
-       <a href="#" class="nav-link">PROJECTS</a>
-    </li>
-
-    <li class="nav-item mr-5">
-       <a href="#" class="nav-link">CONTACT</a>
-     </li>
-
-</ul>
+<div class="wrap nav">
+<a class="brand" href="#home" aria-label="Kligan Braganza home">kligan<span>.</span>
+</a>
+<button class="menu" type="button" aria-controls="navigation" aria-expanded="false">Menu</button>
+<nav id="navigation" aria-label="Main navigation">
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a class="nav-contact" href="#contact">Let’s talk ↗</a>
+</nav>
 </div>
-
-</nav> -->
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top scrolling-navbar">
-    <a class="navbar-brand" href="#">KLIGAN</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center mr-5" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active mr-5" href="home">HOME<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link mr-5" href="skills">SKILLS</a>
-        <a class="nav-item nav-link mr-5" href="projects">PROJECTS</a>
-        <a class="nav-item nav-link mr-5" href="contact">CONTACT</a>
-      </div>
-    </div>
-  </nav> -->
-
-  <div id="scrollTarget">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top ">
-        <!-- <a class="navbar-brand animated bounceIn" href="#" style="font-size: 1.5em; color: rgb(254, 255, 61);"> 
-          <i class="fab fa-battle-net"></i>
-        </a> -->
-<span class="">
-  <a class="navbar-left animated bounceIn" href="#" style="font-size: 1.9em; color: rgb(254, 255, 61);"> 
-
-<i class="fas fa-home"></i>
-
-</span>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#starget" aria-controls="starget" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-        <div class="collapse navbar-collapse justify-content-center mr-5" id="starget">
-            <ul class="nav" role="tablist"> 
-                <li><a class="nav-item mr-5 nav-link active animated bounceIn text-warning" href="#home" style="animation-duration: 1s;" id="h">HOME</a></li>
-                <li><a  class="nav-item mr-5 nav-link animated bounceIn text-warning" href="#skills" style="animation-duration: 1s;" id="s">SKILLS</a></li>
-                <li><a  class="nav-item mr-5 nav-link animated bounceIn text-warning" href="#projects" style="animation-duration: 1s;" id="p">PROJECTS</a></li>
-                <li id="kk"><a  class="nav-item mr-5 nav-link animated bounceIn text-warning" href="#contact" style="animation-duration: 3s;" id="c">CONTACT</a></li>
-              </ul>
-          </div>
-        </nav>
-   </div>
-  
-
-
-
 </header>
-
-<!-- ********************* try using this one **********-->
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">KLIGAN</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center mr-5" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active mr-5" href="#">HOME<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link mr-5" href="#">SKILLS</a>
-        <a class="nav-item nav-link mr-5" href="#">PROJECTS</a>
-        <a class="nav-item nav-link mr-5" href="#">CONTACT</a>
-      </div>
-    </div>
-  </nav> -->
-
-
-    <!--section0 home page Part 1-->
-<main>
-<section id="home">
-   
-        <div class="container-fluid p-0">
-            <div class="site-content">
-                <div class="d-flex justify-content-center ">
-                    <div class="d-flex flex-column ">
-                    
-                        <h1 class="site-title animated fadeInLeft" style="animation-duration: 3s;">KLIGAN BRAGANZA</h1>
-                        <h2 class="site-desc animated fadeInRight " style="animation-duration: 3s;">SOFTWARE DEVELOPER</h2>
-
-                      </div>
-                </div>
-            </div>
-        </div>
-    
+<main id="main" class="wrap">
+<div id="home" class="hero">
+<div>
+<div class="eyebrow">
+<span class="dot">
+</span> Software Engineer · London, UK</div>
+<h1>Thoughtful code.<br>
+<em>Meaningful</em>
+<br>products.</h1>
+<p class="intro">I’m Kligan Braganza. I build reliable software across interfaces, services and the systems that keep them running.</p>
+<div class="buttons">
+<a class="button primary" href="#experience">Explore my work <span aria-hidden="true">↗</span>
+</a>
+<a class="button" href="https://github.com/kligan" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
+<aside class="hero-card" aria-label="Profile overview">
+<div class="card-top">
+<span>ENGINEER / BUILDER</span>
+<span>LONDON, UK</span>
+</div>
+<div class="orb" aria-hidden="true">
+<span class="monogram">kb.</span>
+</div>
+<div class="card-name">Kligan Braganza</div>
+<div class="card-meta">Full stack mindset. Product focus.</div>
+<div class="tags">
+<span class="tag">React + TypeScript</span>
+<span class="tag">APIs + Data</span>
+<span class="tag">Production engineering</span>
+</div>
+</aside>
+</div>
+<div class="strip">
+<span>
+<strong>6+ years</strong> Commercial experience</span>
+<span>
+<strong>Sky</strong> Streaming &amp; media</span>
+<span>
+<strong>FreeWheel</strong> Advertising technology</span>
+</div>
+<section id="about">
+<div class="section-head">
+<div>
+<div class="eyebrow">01 / About</div>
+<h2>From interface to production.</h2>
+</div>
+</div>
+<div class="about-grid">
+<p>I’m a London-based software engineer with commercial experience across streaming, advertising technology and fintech. My strongest foundation is React and TypeScript, with hands-on work across Java/Spring services, REST APIs, databases, testing and platform tooling.</p>
+<div class="note">
+<p>I enjoy taking a feature from the first conversation through to release: understanding the problem, making clear technical decisions, reviewing code and supporting the people building alongside me.</p>
+<p>Outside software, you’ll often find me at a chessboard. I’m also exploring how AI can become part of useful, dependable products.</p>
+</div>
+</div>
 </section>
-
-<!--section0 home page Part 2(about me)-->
-
-<section id="home">
-    <div class="container-fluid p-0">
-        <div class="about-me-div">
-        <div class="d-flex justify-content-center">
-            <h1 class="about-me mt-5" id="anim" onscroll="Animation();">ABOUT ME</h1>
-        </div>
-        
-        <div class="d-flex justify-content-around">
-            <div class="Profile-pic" id="anim1" onscroll="Animation1();"></div>
-            
-            
-            <div class="card mb-5 bg-success text-center" style="width: 16rem; height: 22rem;" id="c0" >
-                <h5 class="card-header" ">Know Me Better </h5>
-                <div class="card-body">
-                <p class="card-text text-light">I am passionate about building excellent software that improves the lives of those around me. 
-                  I have done work in software development, mobile app creation, front-end/back-end web, database/server management, graphic design, and video game development. </p>
-            </div>
-          </div>
-
-            <!-- <div class="card text-white bg-primary mb-3" style="max-width: 18rem;"></div>
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div> -->
-            
-        </div>
-
-    </div>
-        
-    </div>
+<section id="experience">
+<div class="section-head">
+<div>
+<div class="eyebrow">02 / Experience</div>
+<h2>Built in the real world.</h2>
+</div>
+<p>Enterprise platforms, collaborative delivery and ownership beyond the frontend.</p>
+</div>
+<div class="experience">
+<article class="role">
+<div>
+<div class="company">Sky</div>
+<div class="date">Oct 2023 – Present</div>
+<div class="location">London · Comcast group</div>
+</div>
+<div>
+<h3>Senior Software Engineer</h3>
+<p>Enterprise editorial tooling for ATOM/PCMS, supporting streaming products across the Sky and NBCUniversal ecosystem.</p>
+<ul>
+<li>Deliver Experiences and Groups capabilities in the collections editor with React, TypeScript, feature flags and Java configuration migrators.</li>
+<li>Build collection search and linking flows, Channel Manager functionality and automated regression coverage.</li>
+<li>Contribute to Java housekeeping jobs, story syndication and targeted Spring Boot/PostgreSQL service changes.</li>
+<li>Review pull requests, guide junior engineers and support releases, Kubernetes configuration, monitoring and production triage.</li>
+</ul>
+<div class="tags">
+<span class="tag">React / TypeScript</span>
+<span class="tag">Java / Spring</span>
+<span class="tag">PostgreSQL</span>
+<span class="tag">Cypress</span>
+<span class="tag">Kubernetes</span>
+</div>
+</div>
+</article>
+<article class="role">
+<div>
+<div class="company">FreeWheel</div>
+<div class="date">Oct 2021 – Oct 2023</div>
+<div class="location">London · Comcast NBCUniversal</div>
+</div>
+<div>
+<h3>Software Engineer II</h3>
+<p>React and TypeScript interfaces for OneStrata, an enterprise advertising technology platform serving US and EMEA customers.</p>
+<ul>
+<li>Deliver reusable UI components and integrate frontend features with services in a .NET-based application environment.</li>
+<li>Build unit and integration coverage with Jest and React Testing Library.</li>
+<li>Validate releases through Jenkins CI/CD and sandbox deployments, collaborating with product, QA and engineering.</li>
+</ul>
+<div class="tags">
+<span class="tag">React / TypeScript</span>
+<span class="tag">Jest / RTL</span>
+<span class="tag">Jenkins</span>
+<span class="tag">API integration</span>
+</div>
+</div>
+</article>
+</div>
+<div class="earlier">
+<article>
+<div class="date">Jun 2021 – Aug 2021</div>
+<h3>Consult My App</h3>
+<div class="small-label">Software Engineer</div>
+<p>Interactive dashboards with React, Next.js and Material UI, draggable modules, APIs and data visualisation.</p>
+</article>
+<article>
+<div class="date">Jan 2021 – Jun 2021</div>
+<h3>TAB HQ</h3>
+<div class="small-label">Frontend / Full stack development</div>
+<p>MERN admin functionality with React, Node.js, Express, MongoDB and Mongoose.</p>
+</article>
+<article>
+<div class="date">Sep 2020 – Jan 2021</div>
+<h3>Humanitarian Operations</h3>
+<div class="small-label">Full Stack Developer</div>
+<p>React and Redux interfaces, Three.js/WebGL content, ASP.NET MVC integration and Jest tests.</p>
+</article>
+<article>
+<div class="date">2018 – 2020</div>
+<h3>Independent development</h3>
+<div class="small-label">Freelance Web &amp; Mobile Developer</div>
+<p>Web applications using JavaScript, React, Node.js, REST APIs, WordPress and Contentful.</p>
+</article>
+<article>
+<div class="date">Jun 2014 – Jul 2016</div>
+<h3>Must Play Games</h3>
+<div class="small-label">Software Developer · India</div>
+<p>Web and mobile features using JavaScript, C#, APIs and Android tooling.</p>
+</article>
+</div>
 </section>
-
-
-
-
-
-
-
-
-    <!-- section1  skills/technical skills-->
-
-
-
-    <section id="skills">
-        <div class="container-fluid p-0">
-            <div class="skills-bg">
-            <div class="d-flex justify-content-center">
-                <h1 class="skills mt-5">SKILLS</h1>
-            </div>
-
-
-            <div class="d-flex justify-content-around">
-                <div class="card mr-5" style="width: 18rem;" id="c1">
-                    <h5 class="card-title">Interpersonal skills</h5>
-                    <div style="font-size: 3rem; color:teal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-chess"></i></div>
-                    <p class="card-text">The ability to work well on a team, communicate effectively and have the desire to learn new skills </p>
-                </div>
-                <div class="card mr-5" style="width: 18rem;" id="c2">
-                    <h5 class="card-title">Problem-solving</h5>
-                    <div style="font-size: 3em; color: teal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-cogs"></i></div>
-                    <p class="card-text">Structured thinking as well as the ability to think outside the box for the best answer </p>
-                </div>
-                <div class="card mr-5" style="width: 18rem;" id="c3">
-                    <h5 class="card-title">Multitasking</h5>
-                    <div style="font-size: 3em; color: teal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-boxes"></i></div>
-                    <p class="card-text">Manage multiple projects in a deadline-driven environment</p>
-                </div>
-                
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <h1 class="about-me mt-5">TECHNICAL SKILLS</h1>
-            </div>
-
-            <div class="d-flex justify-content-around">
-                <div class="card" style="width: 10rem;" id="c11">
-                    <img src="css/images/html.png" class="card-img-top" height="100px" width="50px">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">HTML5/CSS</h5>
-                    </div>
-                  </div>
-
-                  <div class="card" style="width: 10rem;" id="c12">
-                    <img src="css/images/js.png" class="card-img-top" height="100px" width="50px">
-                    <div class="card-body">
-                      <h5 class="card-title">Javascript</h5>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 10rem;" id="c13">
-                    <img src="css/images/react.png" class="card-img-top" height="100px" width="50px">
-                    <div class="card-body">
-                      <h5 class="card-title">React.js</h5>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 10rem;" id="c14">
-                    <img src="css/images/php.png" class="card-img-top" height="100px" width="50px">
-                    <div class="card-body">
-                      <h5 class="card-title">php</h5>
-                    </div>
-                  </div>
-                  <div class="card" style="width: 10rem;" id="c15">
-                    <img src="css/images/asp.png" class="card-img-top" height="100px" width="50px">
-                    <div class="card-body">
-                      <h5 class="card-title">ASP.NET</h5>
-                    </div>
-                  </div>
-                 
-            </div>
-
-    
-        </div>
-            
-        </div>
-    </section>
-    
-
-
-
-    <!-- section2  Projects -->
-
-
-
-
+<section id="skills">
+<div class="section-head">
+<div>
+<div class="eyebrow">03 / Toolkit</div>
+<h2>A broad engineering toolkit.</h2>
+</div>
+<p>Strong frontend foundations, supported by practical backend and platform experience.</p>
+</div>
+<div class="skill-grid">
+<article class="skill">
+<div class="number">01 / INTERFACES</div>
+<h3>Frontend engineering</h3>
+<p>React, TypeScript, JavaScript, Redux, Material UI, React Hook Form, HTML and CSS.</p>
+</article>
+<article class="skill">
+<div class="number">02 / SERVICES</div>
+<h3>Backend &amp; data</h3>
+<p>Java, Spring Boot exposure, REST APIs, SQL, PostgreSQL, Flyway and Node.js/Express.</p>
+</article>
+<article class="skill">
+<div class="number">03 / CONFIDENCE</div>
+<h3>Automated testing</h3>
+<p>Cypress, React Testing Library, Jest/Vitest, Playwright, JUnit, Mockito and Cucumber.</p>
+</article>
+<article class="skill">
+<div class="number">04 / DELIVERY</div>
+<h3>Platform &amp; CI/CD</h3>
+<p>Kubernetes, Docker, Jenkins, GitHub Actions exposure, YAML and health checks.</p>
+</article>
+<article class="skill">
+<div class="number">05 / RELIABILITY</div>
+<h3>Production engineering</h3>
+<p>Prometheus, monitoring, debugging, observability, operational triage and production support.</p>
+</article>
+<article class="skill">
+<div class="number">06 / COLLABORATION</div>
+<h3>Engineering ownership</h3>
+<p>Feature delivery, code reviews, technical decisions, mentoring, Git, Agile and Jira.</p>
+</article>
+</div>
+<div class="ai">
+<div>
+<div class="small-label">Current learning &amp; projects</div>
+<h3>AI product development</h3>
+</div>
+<p>Exploring Python/FastAPI, LLM APIs, structured outputs, embeddings, vector search, RAG, tool calling, agents and evaluation, with a focus on reliability and prompt-injection awareness.</p>
+</div>
+</section>
 <section id="projects">
-    <div class="container-fluid p-0">
-      <div class="Projects">
-      <div class="d-flex justify-content-center">
-        <h1 class="Projects-view mt-5">PROJECTS</h1>
-    </div>
-        <div class="d-flex justify-content-around">
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="css/images/react.png" alt="Card image">
-            <div class="card-body text-center">
-              <h4 class="card-title">React Project</h4>
-              <p class="card-text">project using react</p>
-              <a href="#" class="btn btn-primary">Visit</a>
-            </div>
-          </div>
-
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="css/images/asp.png" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">ASP.NET</h4>
-              <p class="card-text">project using asp.net mvc</p>
-              <a href="#" class="btn btn-primary">Visit</a>
-            </div>
-          </div>
-
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="css/images/html.png" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">Full Website</h4>
-              <p class="card-text">Full functioning website</p>
-              <a href="#" class="btn btn-primary">Visit</a>
-            </div>
-          </div>
-          </div>
-        </div>
-    </div>
+<div class="section-head">
+<div>
+<div class="eyebrow">04 / Projects</div>
+<h2>Beyond the day job.</h2>
+</div>
+<p>A selection of public repositories. Explore the source, experiments and implementation.</p>
+</div>
+<div class="project-grid">
+<article class="project">
+<div class="project-symbol" aria-hidden="true">↔</div>
+<h3>TFL Application</h3>
+<p>A public application repository focused on London transport.</p>
+<div class="tags">
+<span class="tag">Application</span>
+<span class="tag">Public source</span>
+</div>
+<a href="https://github.com/kligan/TFL-Application" target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+</article>
+<article class="project">
+<div class="project-symbol" aria-hidden="true">{ }</div>
+<h3>React + Node + Express</h3>
+<p>A repository exploring frontend and backend application development.</p>
+<div class="tags">
+<span class="tag">React</span>
+<span class="tag">Node.js / Express</span>
+</div>
+<a href="https://github.com/kligan/React-Node-Express" target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+</article>
+<article class="project">
+<div class="project-symbol" aria-hidden="true">A _ Z</div>
+<h3>React Hangman</h3>
+<p>A browser game project built with React.</p>
+<div class="tags">
+<span class="tag">React</span>
+<span class="tag">Game</span>
+</div>
+<a href="https://github.com/kligan/React-Hangman" target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+</article>
+</div>
+<div class="education">
+<h3>Education &amp; training</h3>
+<div>
+<p>
+<strong>Web Development Immersive</strong> · Just IT, London · 2019–2020</p>
+<p>
+<strong>Postgraduate Diploma in Game Development</strong> · ICAT, Bangalore · 2013–2014</p>
+<p>
+<strong>BTech Information Technology</strong> · Goa University · 2009–2013</p>
+</div>
+</div>
 </section>
-
-
-    <!-- section3  contact -->
-
 <section id="contact">
-  <div class="container-fluid p-0">
-    <div class="contact-bg">
-    <div class="d-flex justify-content-center">
-      <h1 class="contact mt-5">CONTACT ME</h1>
-  </div>
-
-  <div class="d-flex justify-content-around">
-    <div class="card bg-warning" style="width: 10rem;">
-        <img src="css/images/email1.png" class="card-img-top" height="110px" width="20px">
-        <div class="card-body">
-          <h5 class="card-title">Email</h5>
-        </div>
-      </div>
-
-      <div class="card bg-warning" style="width: 10rem;">
-        <img src="css/images/link1.png" class="card-img-top" height="110px" width="10px">
-        <div class="card-body">
-          <h5 class="card-title">LinkdIn</h5>
-        </div>
-      </div>
-      <div class="card bg-warning" style="width: 10rem;">
-        <img src="css/images/git1.png" class="card-img-top" height="110px" width="10px">
-        <div class="card-body">
-          <h5 class="card-title">Github</h5>
-        </div>
-      </div>
- 
-     
+<div class="contact">
+<div>
+<div class="eyebrow">05 / Get in touch</div>
+<h2>Let’s build<br>something useful.</h2>
+<p>Have a role, a project or an interesting engineering problem? I’d love to hear from you.</p>
 </div>
- 
-    </div>
-
-
-
- 
-  </div>
-
-
+<div class="contact-links">
+<a href="mailto:kliganbraganza@gmail.com">kliganbraganza@gmail.com <span aria-hidden="true">↗</span>
+</a>
+<a href="https://www.linkedin.com/in/kligan-braganza/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span>
+</a>
+<a href="https://github.com/kligan" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
 </section>
-
-<div class="container-fluid p-0 email">
-
-<div class="container">
-  <form class="contact-form" action="contactForm.php" method="post">
-
-   
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-   
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-   
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <input type="submit" value="Submit">
-
-  </form>
-</div>
-</div>
-    <!-- footerr -->
-
-    <footer class="bg-dark">
-<span style="color: black;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Terms   Privacy  www.kliganbraganza.co.uk</span>
-    
-    </footer>
-   
-
-  </main>
-
-
-
-<!-- js,popper,jquery -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-
- 
-
+</main>
+<footer class="wrap">
+<span>© <span id="year">2026</span> Kligan Braganza</span>
+<a href="#home">Back to top ↑</a>
+</footer>
+<script>
+const menu=document.querySelector('.menu');const navigation=document.getElementById('navigation');function closeMenu(){navigation.classList.remove('open');menu.setAttribute('aria-expanded','false')}menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));navigation.classList.toggle('open',open)});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus()}});document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
