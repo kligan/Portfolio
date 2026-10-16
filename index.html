@@ -137,6 +137,15 @@ footer{gap:18px}
 }
 
 
+/* Interactive hero: decoration stays behind accessible content. */
+.hero{position:relative;isolation:isolate}
+.hero>div,.hero>aside{position:relative;z-index:1}
+#particles{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.65}
+.hero-card{transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(2deg);transition:transform .18s ease-out;will-change:auto}
+.portrait-wrap{margin:24px 0;overflow:hidden;border-radius:16px;border:1px solid #527b62;aspect-ratio:1.15}
+.portrait{display:block;width:100%;height:100%;object-fit:cover;object-position:center 24%}
+@media(max-width:620px){.hero-card{transform:none}.portrait-wrap{max-height:280px}}
+@media(prefers-reduced-motion:reduce){#particles{display:none}.hero-card{transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -157,6 +166,7 @@ footer{gap:18px}
 </header>
 <main id="main" class="wrap">
 <div id="home" class="hero">
+<canvas id="particles" aria-hidden="true"></canvas>
 <div>
 <div class="eyebrow">
 <span class="dot">
@@ -177,8 +187,8 @@ footer{gap:18px}
 <span>ENGINEER / BUILDER</span>
 <span>LONDON, UK</span>
 </div>
-<div class="orb" aria-hidden="true">
-<span class="monogram">kb.</span>
+<div class="portrait-wrap">
+<img class="portrait" src="css/images/pic.jpg" alt="Kligan Braganza" width="958" height="960" fetchpriority="high">
 </div>
 <div class="card-name">Kligan Braganza</div>
 <div class="card-meta">Full stack mindset. Product focus.</div>
@@ -425,6 +435,86 @@ footer{gap:18px}
 </footer>
 <script>
 const menu=document.querySelector('.menu');const navigation=document.getElementById('navigation');function closeMenu(){navigation.classList.remove('open');menu.setAttribute('aria-expanded','false')}menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));navigation.classList.toggle('open',open)});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){closeMenu();menu.focus()}});document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+<script>
+(() => {
+  const hero = document.querySelector('.hero');
+  const card = document.querySelector('.hero-card');
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  if (!ctx) return;
+  let width = 0, height = 0, points = [], frame = null, visible = true, last = 0;
+  const pointer = { x: -1000, y: -1000 };
+  const enabled = () => !motion.matches && finePointer.matches && visible && !document.hidden;
+  function resetPointer() {
+    pointer.x = pointer.y = -1000;
+    card.style.removeProperty('--tilt-x');
+    card.style.removeProperty('--tilt-y');
+  }
+  function resize() {
+    width = hero.clientWidth; height = hero.clientHeight;
+    const ratio = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    points = Array.from({ length: Math.min(65, Math.round(width / 18)) }, () => {
+      const x = Math.random() * width, y = Math.random() * height;
+      return { x, y, homeX: x, homeY: y, phase: Math.random() * Math.PI * 2 };
+    });
+  }
+  function draw(time) {
+    frame = null;
+    if (!enabled()) return;
+    const step = Math.min((time - (last || time)) / 16.67, 2); last = time;
+    ctx.clearRect(0, 0, width, height);
+    for (const p of points) {
+      const dx = p.x - pointer.x, dy = p.y - pointer.y;
+      const distance = Math.hypot(dx, dy);
+      if (distance < 135) {
+        const force = (1 - distance / 135) * 2.8 * step;
+        p.x += dx / (distance || 1) * force; p.y += dy / (distance || 1) * force;
+      }
+      p.x += (p.homeX + Math.sin(time * .0003 + p.phase) * 12 - p.x) * .025 * step;
+      p.y += (p.homeY + Math.cos(time * .00025 + p.phase) * 12 - p.y) * .025 * step;
+      ctx.fillStyle = '#326b51'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2); ctx.fill();
+    }
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const a = points[i], b = points[j], distance = Math.hypot(a.x - b.x, a.y - b.y);
+        if (distance > 100) continue;
+        ctx.strokeStyle = 'rgba(50,107,81,' + (1 - distance / 100) * .22 + ')';
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+    frame = requestAnimationFrame(draw);
+  }
+  function sync() {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null; last = 0;
+    if (enabled()) frame = requestAnimationFrame(draw);
+    else { resetPointer(); ctx.clearRect(0, 0, width, height); }
+  }
+  hero.addEventListener('pointermove', event => {
+    if (!enabled()) return;
+    const rect = hero.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left; pointer.y = event.clientY - rect.top;
+  }, { passive: true });
+  hero.addEventListener('pointerleave', resetPointer);
+  card.addEventListener('pointermove', event => {
+    if (!enabled()) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--tilt-x', ((.5 - (event.clientY - rect.top) / rect.height) * 8) + 'deg');
+    card.style.setProperty('--tilt-y', (((event.clientX - rect.left) / rect.width - .5) * 8) + 'deg');
+  }, { passive: true });
+  card.addEventListener('pointerleave', resetPointer);
+  new ResizeObserver(() => { resize(); sync(); }).observe(hero);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(hero);
+  document.addEventListener('visibilitychange', sync);
+  motion.addEventListener('change', sync);
+  finePointer.addEventListener('change', sync);
+  resize(); sync();
+})();
 </script>
 </body>
 </html>
